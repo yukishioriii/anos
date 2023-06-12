@@ -1,21 +1,14 @@
-print_letter:
-    pusha
-    mov ah, 0x0e
-    mov al, [bx]
-    int 0x10
-    popa
-    ret
-
 print:
-    pusha
-    call print_letter
-    add bx, 0x1
-    cmp bx, 0
-    jne print
+pusha
 
-    popa
-    ret
+print_letter:
+mov ah, 0x0e
+mov al, [bx]
+int 0x10
+add bx, 0x1
+cmp al, 0
+jne print_letter
 
-; done:
-;     popa
-;     ret
+popa
+ret
+
