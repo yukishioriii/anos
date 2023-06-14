@@ -1,28 +1,26 @@
-[org 0x7c00]
+[ org 0x7c00 ]
 
-mov bp, 0x9000 ; set the stack
-mov sp, bp 
+; mov ah, 0x0e
 
-mov bx, MSG_REAL_MODE
-call print
+; mov al, the_feck
+; int 0x10
 
-call switch_to_pm
+; mov al, [the_feck]
+; int 0x10
+
+; mov bx, the_feck
+; add bx, 0x0
+; mov al, [bx]
+; int 0x10
+
+mov al,0xba
+int 0x10
 
 jmp $
 
-%include "print.asm"
-%include "gdt.asm"
-%include "print32.asm"
-%include "switch_to_pm.asm"
+the_feck:
+    db "X"
 
-[bits 32]
-BEGIN_PM:
-mov ebx, MSG_PROT_MODE
-call print_string_pm
-jmp $
-
-MSG_REAL_MODE db "started in 16 bits real mode", 0
-MSG_PROT_MODE db "Successfully landed in 69 bits protected mode", 0
 
 times 510-($-$$) db 0
 dw 0xaa55
