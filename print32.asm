@@ -1,6 +1,6 @@
 [bits 32]
 VIDEO_MEMORY equ 0xb8000
-WHITE_ON_BLACK equ 0x0f
+WHITE_ON_BLACK equ 0x0e
 
 ; print null terminated string
 print_string_pm:
